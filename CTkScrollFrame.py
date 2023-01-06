@@ -73,11 +73,7 @@ if __name__ == "__main__":
 	scrollFrame.pack(side="top", fill="both", expand=True)
 	
 	for row in range(100):
-		# 					IMPORTANT
-		# 						||
-		# 						||
-		# 						\/
-		# 		|-----------|-------|
+		# VERY IMPORTANT place it on viewPort, not just scrollFrame
 		CTkLabel(scrollFrame.viewPort, text=str(row), width=3).grid(row=row, column=0)
 		CTkButton(scrollFrame.viewPort, text=f"second column of row {row}").grid(row=row, column=1)
 	root.mainloop()
