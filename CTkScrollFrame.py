@@ -14,7 +14,12 @@ class CTkScrollFrame(CTkFrame):
 		super().__init__(master)
 		self.canvas = CTkCanvas(self, borderwidth=0, highlightthickness=0)
 		bgc = master.cget("fg_color")
+		
+		#IF USE ONLY DARK THEME:
 		self.canvas.configure(bg=bgc[1] if type(bgc) == list else bgc)
+		
+		#IF USE ONLY lIGHT THEME:
+		#self.canvas.configure(bg=bgc[0] if type(bgc) == list else bgc)
 		
 		self.viewPort = CTkFrame(self.canvas, fg_color="gray20", height=int(self.canvas.cget("height"))) # place a frame on the canvas, this frame will hold the child widgets
 		self.vsb = CTkScrollbar(self, orientation=VERTICAL, command=self.canvas.yview)
