@@ -17,13 +17,13 @@ class CTkScrollFrame(CTkFrame):
 		
 		self.canvas.configure(bg=bgc[1 if get_appearance_mode() == "Dark" else 0] if type(bgc) == list else bgc)
 		
-		self.viewPort = CTkFrame(self.canvas, height=int(self.canvas.cget("height"))) # place a frame on the canvas, this frame will hold the child widgets
+		self.viewPort = CTkFrame(self.canvas, fg_color=bgc, height=int(self.canvas.cget("height"))) # place a frame on the canvas, this frame will hold the child widgets
 		self.vsb = CTkScrollbar(self, orientation=VERTICAL, command=self.canvas.yview)
 		self.canvas.configure(yscrollcommand=self.vsb.set)
 		
 		self.vsb.pack(side=RIGHT, fill=Y)
 		self.canvas.pack(side=LEFT, fill=BOTH, expand=True)
-		self.canvas_window = self.canvas.create_window((5, 10), window=self.viewPort, anchor=NW, tags="self.viewPort")
+		self.canvas_window = self.canvas.create_window((4, 4), window=self.viewPort, anchor=NW, tags="self.viewPort")
 		
 		self.viewPort.bind("<Configure>", self.onFrameConfigure)
 		self.canvas.bind("<Configure>", self.onCanvasConfigure)
